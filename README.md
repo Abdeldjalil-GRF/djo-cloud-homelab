@@ -35,3 +35,4 @@ Leur sauvegarde et leur restauration seront documentees separement.
 
 - [Architecture](docs/architecture.md)
 - [Exploitation](docs/exploitation.md)
+- [Sauvegarde et restauration](docs/sauvegarde-restauration.md)
