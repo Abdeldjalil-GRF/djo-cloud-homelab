@@ -1,0 +1,26 @@
+# Donnees persistantes de Navidrome
+/navidrome/data/
+/navidrome/music/
+
+# Sauvegardes et secrets locaux
+/backups/
+/secrets/
+
+# Variables locales
+.env
+.env.*
+!.env.example
+
+# Cles et certificats locaux
+*.key
+*.pem
+id_rsa
+id_ed25519
+
+# Ancienne copie locale de Compose
+compose.before-https.yaml
+
+# Fichiers temporaires
+*.log
+*.swp
+*~
