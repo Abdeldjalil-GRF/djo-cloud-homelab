@@ -30,3 +30,8 @@ Leur sauvegarde et leur restauration seront documentees separement.
 - Monitoring avec Prometheus et Grafana.
 - CI/CD et GitOps avec Argo CD.
 - Interface de gestion DJO CLOUD.
+
+## Documentation
+
+- [Architecture](docs/architecture.md)
+- [Exploitation](docs/exploitation.md)
