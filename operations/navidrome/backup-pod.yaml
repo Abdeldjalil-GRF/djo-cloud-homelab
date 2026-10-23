@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: navidrome-backup
+  namespace: music
+spec:
+  restartPolicy: Never
+  automountServiceAccountToken: false
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+    runAsGroup: 1000
+  containers:
+    - name: backup
+      image: alpine:3.24.2
+      command: ["sleep", "86400"]
+      volumeMounts:
+        - name: data
+          mountPath: /source/navidrome/data
+          readOnly: true
+        - name: music
+          mountPath: /source/navidrome/music
+          readOnly: true
+  volumes:
+    - name: data
+      persistentVolumeClaim:
+        claimName: navidrome-data
+    - name: music
+      persistentVolumeClaim:
+        claimName: navidrome-music
