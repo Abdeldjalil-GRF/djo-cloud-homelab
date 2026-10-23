@@ -5,13 +5,15 @@ en construisant progressivement un cloud personnel.
 
 ## Infrastructure actuelle
 
-- Machine hote : HP ZBook sous Windows.
+- Machine hôte : HP ZBook sous Windows 11 Pro.
 - Virtualisation : VMware Workstation.
-- VM : Ubuntu Server, nommee djo-lab-01.
-- Application personnelle : Navidrome.
-- Exercice Docker : Nginx.
-- Acces distant prive : Tailscale.
-- Acces HTTPS : reverse proxy Tailscale Serve.
+- VM principale : Ubuntu Server, nommée djo-k3s-01.
+- Orchestration : Kubernetes avec K3s.
+- Application principale : Navidrome.
+- Accès distant privé : Tailscale.
+- Accès HTTPS : reverse proxy Tailscale Serve.
+- VM historique : djo-lab-01, avec l'ancienne installation Docker arrêtée.
+- Exercices Docker et Nginx conservés dans le dépôt.
 
 ## Configuration des applications
 
@@ -33,9 +35,10 @@ Leur sauvegarde et leur restauration seront documentees separement.
 
 ## Documentation
 
-- [Architecture](docs/architecture.md)
-- [Exploitation](docs/exploitation.md)
-- [Sauvegarde et restauration](docs/sauvegarde-restauration.md)
+- [Architecture Docker — historique](docs/architecture.md)
+- [Exploitation Docker — historique](docs/exploitation.md)
+- [Sauvegarde et restauration Docker](docs/sauvegarde-restauration.md)
+- [Kubernetes — environnement principal](docs/kubernetes.md)
 
 ## Kubernetes
 
@@ -47,4 +50,7 @@ Leur sauvegarde et leur restauration seront documentees separement.
 - Accès HTTPS privé : Tailscale Serve.
 - Manifests : kubernetes/navidrome/
 - Pod temporaire d'import : operations/navidrome/restore-pod.yaml
-- Migration en cours de validation avant bascule définitive.
+- Bascule vers Kubernetes validée.
+- Lecture validée depuis le PC et l'iPhone.
+- Retour du service après redémarrage de la VM validé.
+- Ancienne installation Docker conservée comme point de retour.
