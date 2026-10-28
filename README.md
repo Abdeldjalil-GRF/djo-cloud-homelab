@@ -39,6 +39,7 @@ Leur sauvegarde et leur restauration seront documentees separement.
 - [Exploitation Docker — historique](docs/exploitation.md)
 - [Sauvegarde et restauration Docker](docs/sauvegarde-restauration.md)
 - [Kubernetes — environnement principal](docs/kubernetes.md)
+- [Monitoring](docs/monitoring.md)
 
 ## Kubernetes
 

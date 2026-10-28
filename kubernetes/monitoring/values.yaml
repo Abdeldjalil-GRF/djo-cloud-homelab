@@ -1,0 +1,141 @@
+alertmanager:
+  enabled: false
+
+# Désactiver les règles des composants non surveillés actuellement.
+defaultRules:
+  rules:
+    alertmanager: false
+    etcd: false
+    kubeControllerManager: false
+    kubeProxy: false
+    kubeSchedulerAlerting: false
+    kubeSchedulerRecording: false
+
+# Collecte des métriques internes à adapter ultérieurement à K3s.
+kubeEtcd:
+  enabled: false
+
+kubeControllerManager:
+  enabled: false
+
+kubeScheduler:
+  enabled: false
+
+kubeProxy:
+  enabled: false
+
+prometheus:
+  service:
+    type: ClusterIP
+
+  ingress:
+    enabled: false
+
+  prometheusSpec:
+    replicas: 1
+    scrapeInterval: 30s
+    evaluationInterval: 30s
+    retention: 2d
+    retentionSize: "2GB"
+
+    resources:
+      requests:
+        cpu: "100m"
+        memory: "512Mi"
+      limits:
+        cpu: "1"
+        memory: "1Gi"
+
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: local-path-retain
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 5Gi
+
+grafana:
+  enabled: true
+
+  deploymentStrategy:
+    type: Recreate
+    rollingUpdate: null
+
+  admin:
+    existingSecret: grafana-admin
+    userKey: admin-user
+    passwordKey: admin-password
+
+  service:
+    type: ClusterIP
+
+  ingress:
+    enabled: true
+    ingressClassName: traefik
+    hosts:
+      - djo-k3s-01.tail4cb576.ts.net
+    path: /grafana
+    pathType: Prefix
+
+  serviceMonitor:
+    path: /grafana/metrics
+    scheme: http
+
+  grafana.ini:
+    server:
+      domain: djo-k3s-01.tail4cb576.ts.net
+      root_url: https://djo-k3s-01.tail4cb576.ts.net/grafana/
+      serve_from_sub_path: true
+
+  persistence:
+    enabled: true
+    storageClassName: local-path-retain
+    accessModes:
+      - ReadWriteOnce
+    size: 1Gi
+
+  resources:
+    requests:
+      cpu: "50m"
+      memory: "128Mi"
+    limits:
+      cpu: "500m"
+      memory: "512Mi"
+
+  sidecar:
+    resources:
+      requests:
+        cpu: "10m"
+        memory: "32Mi"
+      limits:
+        cpu: "100m"
+        memory: "128Mi"
+
+prometheusOperator:
+  resources:
+    requests:
+      cpu: "50m"
+      memory: "64Mi"
+    limits:
+      cpu: "500m"
+      memory: "256Mi"
+
+kube-state-metrics:
+  resources:
+    requests:
+      cpu: "20m"
+      memory: "32Mi"
+    limits:
+      cpu: "200m"
+      memory: "128Mi"
+
+prometheus-node-exporter:
+  resources:
+    requests:
+      cpu: "20m"
+      memory: "32Mi"
+    limits:
+      cpu: "200m"
+      memory: "128Mi"
