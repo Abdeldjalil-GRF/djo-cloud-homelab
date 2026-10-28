@@ -40,6 +40,7 @@ Leur sauvegarde et leur restauration seront documentees separement.
 - [Sauvegarde et restauration Docker](docs/sauvegarde-restauration.md)
 - [Kubernetes — environnement principal](docs/kubernetes.md)
 - [Monitoring](docs/monitoring.md)
+- [Cluster K3s à deux nœuds](docs/cluster-multinode.md)
 
 ## Kubernetes
 
