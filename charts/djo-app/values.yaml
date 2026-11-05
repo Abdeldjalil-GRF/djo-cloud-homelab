@@ -1,8 +1,11 @@
 replicaCount: 1
 
+imagePullSecrets: []
+
 image:
   repository: nginx
   tag: "1.30.5-alpine"
+  digest: ""
   pullPolicy: IfNotPresent
 
 containerPort: 80
@@ -20,3 +23,8 @@ resources:
   limits:
     cpu: "200m"
     memory: "128Mi"
+ingress:
+  enabled: false
+  className: traefik
+  host: ""
+  path: ""

@@ -1,0 +1,18 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/abdeldjalil-grf/djo-home
+  tag: "0.1.0"
+  digest: "sha256:4a34dc9a0d0889296e63eac170587ac0772fe175f26c8336e26e45e2d3b81b04"
+  pullPolicy: Always
+
+imagePullSecrets:
+  - name: ghcr-pull
+
+healthCheck:
+  path: /cloud/
+
+ingress:
+  enabled: true
+  host: djo-k3s-01.tail4cb576.ts.net
+  path: /cloud
