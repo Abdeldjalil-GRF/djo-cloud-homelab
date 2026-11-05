@@ -1,0 +1,22 @@
+replicaCount: 1
+
+image:
+  repository: nginx
+  tag: "1.30.5-alpine"
+  pullPolicy: IfNotPresent
+
+containerPort: 80
+
+service:
+  port: 80
+
+healthCheck:
+  path: /
+
+resources:
+  requests:
+    cpu: "25m"
+    memory: "32Mi"
+  limits:
+    cpu: "200m"
+    memory: "128Mi"

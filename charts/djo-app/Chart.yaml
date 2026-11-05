@@ -1,0 +1,5 @@
+apiVersion: v2
+name: djo-app
+description: Chart Helm pour les applications HTTP de DJO CLOUD
+type: application
+version: 0.1.0
